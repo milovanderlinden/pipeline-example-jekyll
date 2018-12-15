@@ -1,0 +1,1 @@
+Using https://github.com/cnunciato/jekyll-starter to test if pipelines in rancher can facilitate jekyll

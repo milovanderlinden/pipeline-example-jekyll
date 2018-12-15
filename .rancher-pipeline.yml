@@ -1,0 +1,17 @@
+stages:
+- name: Build
+  steps:
+  - runScriptConfig:
+      image: jekyll/builder:3.8
+      shellScript: |-
+        jekyll build
+- name: Publish
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: codefornl-website:${CICD_EXECUTION_SEQUENCE}
+- name: Deploy
+  steps:
+  - applyYamlConfig:
+path: ./deployment.yaml

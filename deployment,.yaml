@@ -1,0 +1,36 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: jekyll-service
+spec:
+  selector:
+    app: jekyll
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-jekyll
+  labels:
+    app: jekyll
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jekyll
+  template:
+    metadata:
+      labels:
+        app: jekyll
+    spec:
+      imagePullSecrets:
+      - name: pipeline-docker-registry
+      containers:
+      - name: jekyll
+        image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
+        ports:
+        - containerPort: 80
