@@ -1,26 +1,25 @@
 ---
 ---
-
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="/css/site.css">
-	<script src="/js/site.js"></script>
-	<title>My Blog</title>
+    <link rel="stylesheet" href="/css/site.css">
+    <script src="/js/site.js"></script>
+    <title>{{ page.title}}</title>
 </head>
 <body>
-	<header>
-		{% include header.html %}
-	</header>
-	<div class="container">
-		<article>
-			<h1><a href="{{ site.base_url }}{{ page.url }}">{{ page.title }}</a></h1>
-			<p>{{ page.date | date_to_string }}</p>
-			<p>{{ content }}</p>
-		</article>
-	</div>
-	<footer>
-		{% include footer.html %}
-	</footer>
+    <header>
+        {% include header.html %}
+    </header>
+    <div class="container" markdown="0">
+        <article>
+            <h1>{{ page.title }}</h1>
+            <i>{{ page.date | date_to_string }}</i>
+            {{ content }}
+        </article>
+    </div>
+    <footer>
+        {% include footer.html %}
+    </footer>
 </body>
 </html>
