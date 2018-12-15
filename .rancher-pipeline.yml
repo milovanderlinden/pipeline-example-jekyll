@@ -3,8 +3,7 @@ stages:
   steps:
   - runScriptConfig:
       image: jekyll/builder:3.8
-      shellScript: |-
-        jekyll build
+      shellScript: jekyll build
 - name: Publish
   steps:
   - publishImageConfig:
@@ -13,5 +12,6 @@ stages:
       tag: example-jekyll:${CICD_EXECUTION_SEQUENCE}
 - name: Deploy
   steps:
+  - {}
   - applyYamlConfig:
-path: ./deployment.yaml
+      path: ./deployment.yaml
