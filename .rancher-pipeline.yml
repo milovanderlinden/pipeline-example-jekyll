@@ -10,7 +10,7 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
-      tag: codefornl-website:${CICD_EXECUTION_SEQUENCE}
+      tag: example-jekyll:${CICD_EXECUTION_SEQUENCE}
 - name: Deploy
   steps:
   - applyYamlConfig:
