@@ -3,7 +3,11 @@ stages:
   steps:
   - runScriptConfig:
       image: jekyll/builder:3.8
-      shellScript: jekyll build
+      shellScript: |-
+        mkdir _site
+        chmod a+rw _site
+        jekyll build
+
 - name: Publish
   steps:
   - publishImageConfig:
